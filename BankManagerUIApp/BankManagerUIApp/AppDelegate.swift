@@ -1,6 +1,6 @@
 //
 //  BankManagerUIApp - AppDelegate.swift
-//  Created by yagom. 
+//  Created by Kiwi, Kay. 
 //  Copyright © yagom academy. All rights reserved.
 // 
 
