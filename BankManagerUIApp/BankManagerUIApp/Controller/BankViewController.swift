@@ -6,11 +6,16 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class BankViewController: UIViewController {
+    var bankView = BankView()
+    
+    override func loadView() {
+        view = bankView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        view.backgroundColor = .white
     }
 
 }
