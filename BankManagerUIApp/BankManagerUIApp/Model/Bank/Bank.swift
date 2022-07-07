@@ -12,21 +12,12 @@ final class Bank {
     private var numberOfCustomers: Int = 0
     private var banker = Banker()
     
-    private func printMenu() {
-        print("1 : 은행 개점")
-        print("2 : 종료")
-        print("입력 : ", terminator: "")
-    }
-    
-    private func generateRandomNumberOfCustomers() {
-        numberOfCustomers = Int.random(in: 10...30)
-    }
-    
     private func insertCustomersIntoQueue() {
-        for element in 1...self.numberOfCustomers {
+        for element in (numberOfCustomers + 1)...(numberOfCustomers + 10) {
             let random = Int.random(in: 0...1)
             let customer = Customer(customerNumber: element, business: BankWorkType.allCases[random])
-            self.lineOfCustomers.enqueue(data: customer)
+            lineOfCustomers.enqueue(data: customer)
+            numberOfCustomers += 10
         }
     }
     
@@ -34,8 +25,8 @@ final class Bank {
         let start = CFAbsoluteTimeGetCurrent()
         let group = DispatchGroup()
         group.enter()
-        while !self.lineOfCustomers.isEmpty {
-            guard let customer = self.lineOfCustomers.dequeue() else { return }
+        while !lineOfCustomers.isEmpty {
+            guard let customer = lineOfCustomers.dequeue() else { return }
             if customer.business == .deposit {
                 banker.handleDepositCustomers(customer: customer, group: group)
             } else {
@@ -46,23 +37,12 @@ final class Bank {
         group.notify(queue: .global()) {
             let diff = CFAbsoluteTimeGetCurrent() - start
             print("업무가 마감되었습니다. 오늘 업무를 처리한 고객은 총 \(self.numberOfCustomers)명이며, 총 업무시간은 \(String(format: "%.2f", diff))초 입니다.")
-            self.printMenu()
         }
     }
     
-    func runBusiness() {
-        var userInput: String?
-        self.printMenu()
-        repeat {
-            userInput = readLine()
-            if let input = userInput {
-                if input == "1" {
-                    self.generateRandomNumberOfCustomers()
-                    self.insertCustomersIntoQueue()
-                    self.orderBankerToWork()
-                }
-            }
-        } while userInput != "2"
+    func reset() {
+        numberOfCustomers = 0
+        lineOfCustomers.clear()
     }
 }
 
