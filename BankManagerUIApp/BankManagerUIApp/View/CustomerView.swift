@@ -9,12 +9,40 @@ import UIKit
 
 class CustomerView: UIView {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    let customer: Customer
+    
+    let customerLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        label.font = .preferredFont(forTextStyle: .title3)
+        label.adjustsFontForContentSizeCategory = true
+        return label
+    }()
+    
+    init(customer: Customer) {
+        self.customer = customer
+        super.init(frame: .zero)
+        setupData()
+        customerLabelConfigure()
     }
-    */
-
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setupData() {
+        customerLabel.text = "\(customer.customerNumber) - \(customer.business.name)"
+    }
+    
+    func customerLabelConfigure() {
+        self.addSubview(customerLabel)
+        
+        NSLayoutConstraint.activate([
+            customerLabel.topAnchor.constraint(equalTo: self.topAnchor),
+            customerLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            customerLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            customerLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor)
+        ])
+    }
 }
