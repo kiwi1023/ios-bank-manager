@@ -15,6 +15,10 @@ class BankView: UIView {
         var button = UIButton()
         button.setTitle("고객 10명 추가", for: .normal)
         button.setTitleColor(.systemBlue, for: .normal)
+        button.titleLabel?.numberOfLines = 0
+        button.titleLabel?.font = .preferredFont(forTextStyle: .title3)
+        button.titleLabel?.adjustsFontForContentSizeCategory = true
+        
         return button
     }()
     
@@ -22,14 +26,20 @@ class BankView: UIView {
         var button = UIButton()
         button.setTitle("초기화", for: .normal)
         button.setTitleColor(.red, for: .normal)
+        button.titleLabel?.numberOfLines = 0
+        button.titleLabel?.font = .preferredFont(forTextStyle: .title3)
+        button.titleLabel?.adjustsFontForContentSizeCategory = true
+        
         return button
     }()
     
     let timerLabel: UILabel = {
         let label = UILabel()
         label.text = "00:00:000"
+        label.numberOfLines = 0
         label.textAlignment = .left
         label.font = .preferredFont(forTextStyle: .title3)
+        label.adjustsFontForContentSizeCategory = true
         
         return label
     }()
@@ -37,8 +47,10 @@ class BankView: UIView {
     let processingTimeLabel: UILabel = {
         let label = UILabel()
         label.text = "업무시간 -"
+        label.numberOfLines = 0
         label.textAlignment = .right
         label.font = .preferredFont(forTextStyle: .title3)
+        label.adjustsFontForContentSizeCategory = true
         
         return label
     }()
@@ -50,6 +62,7 @@ class BankView: UIView {
         label.textColor = .white
         label.backgroundColor = .systemGreen
         label.font = .preferredFont(forTextStyle: .title1)
+        label.adjustsFontForContentSizeCategory = true
         
         return label
     }()
@@ -61,6 +74,7 @@ class BankView: UIView {
         label.textColor = .white
         label.backgroundColor = .systemIndigo
         label.font = .preferredFont(forTextStyle: .title1)
+        label.adjustsFontForContentSizeCategory = true
         
         return label
     }()
