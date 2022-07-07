@@ -18,10 +18,27 @@ class BankViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         bankView.addCustomers.addTarget(self, action: #selector(didAddCustomersTapped), for: .touchUpInside)
+        bankView.refresh.addTarget(self, action: #selector(didRefreshTapped), for: .touchUpInside)
     }
     
     @objc func didAddCustomersTapped() {
         bank.insertCustomersIntoQueue()
-        bank.orderBankerToWork()
+        
+        while bank.lineOfCustomers.isEmpty == false {
+        guard let customer = bank.lineOfCustomers.dequeue() else { return }
+        self.bankView.waitingStackView.addArrangedSubview(CustomerView.init(customer: customer))
+        }
+    }
+    
+    func removeStacview(stackView: UIStackView) {
+        for labels in stackView.subviews {
+            labels.removeFromSuperview()
+        }
+    }
+    
+    @objc func didRefreshTapped() {
+        removeStacview(stackView: bankView.waitingStackView)
+        removeStacview(stackView: bankView.workStackView)
+        bank.reset()
     }
 }

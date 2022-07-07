@@ -129,6 +129,7 @@ class BankView: UIView {
     let customerStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.distribution = .fillEqually
+        stackView.axis = .horizontal
         
         return stackView
     }()
@@ -137,8 +138,6 @@ class BankView: UIView {
         let stackView = UIStackView()
         stackView.spacing = 10
         stackView.axis = .vertical
-        stackView.distribution = .fillEqually
-        stackView.alignment = .fill
         
         return stackView
     }()
@@ -166,7 +165,7 @@ class BankView: UIView {
             statusStackView.addArrangedSubview($0)
         }
         
-        [buttonStackView, timerStackView, statusStackView].forEach {
+        [buttonStackView, timerStackView, statusStackView, customerStackView].forEach {
             mainStackView.addArrangedSubview($0)
         }
         
@@ -181,8 +180,12 @@ class BankView: UIView {
     
     func setupButtonStackConstraints() {
         mainStackView.translatesAutoresizingMaskIntoConstraints = false
+        waitingStackView.translatesAutoresizingMaskIntoConstraints = false
+        workStackView.translatesAutoresizingMaskIntoConstraints = false
+        
         NSLayoutConstraint.activate([
             mainStackView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
+            mainStackView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor),
             mainStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             mainStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor)
         ])

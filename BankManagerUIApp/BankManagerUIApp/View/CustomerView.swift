@@ -8,7 +8,7 @@
 import UIKit
 
 class CustomerView: UIView {
-
+    
     let customer: Customer
     
     let customerLabel: UILabel = {
@@ -33,9 +33,15 @@ class CustomerView: UIView {
     
     func setupData() {
         customerLabel.text = "\(customer.customerNumber) - \(customer.business.name)"
+        
+        if customer.business == .loan {
+            customerLabel.textColor = .purple
+        }
     }
     
     func customerLabelConfigure() {
+        customerLabel.translatesAutoresizingMaskIntoConstraints = false
+        
         self.addSubview(customerLabel)
         
         NSLayoutConstraint.activate([

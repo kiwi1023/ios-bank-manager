@@ -8,7 +8,7 @@
 import Foundation
 
 final class Bank {
-    private var lineOfCustomers = BankManagerQueue<Customer>()
+    var lineOfCustomers = BankManagerQueue<Customer>()
     private var numberOfCustomers: Int = 0
     private var banker = Banker()
     
