@@ -12,16 +12,16 @@ final class Bank {
     private var numberOfCustomers: Int = 0
     private var banker = Banker()
     
-    private func insertCustomersIntoQueue() {
+    func insertCustomersIntoQueue() {
         for element in (numberOfCustomers + 1)...(numberOfCustomers + 10) {
             let random = Int.random(in: 0...1)
             let customer = Customer(customerNumber: element, business: BankWorkType.allCases[random])
             lineOfCustomers.enqueue(data: customer)
-            numberOfCustomers += 10
         }
+        numberOfCustomers += 10
     }
     
-    private func orderBankerToWork() {
+    func orderBankerToWork() {
         let start = CFAbsoluteTimeGetCurrent()
         let group = DispatchGroup()
         group.enter()
