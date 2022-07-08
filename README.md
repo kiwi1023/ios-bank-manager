@@ -10,7 +10,7 @@
 * [키워드](#키워드)
 * [핵심경험](#핵심경험)
 * [기능설명](#기능설명)
-    * [STEP 1] (https://github.com/kiwi1023/ios-bank-manager/blob/STEP1/docs/STEP1.md)
+    * [STEP 1](https://github.com/kiwi1023/ios-bank-manager/blob/STEP1/docs/STEP1.md)
 
 
 # 프로젝트 소개
