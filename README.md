@@ -1,6 +1,8 @@
 # 🏦 은행 창구 매니저
 > 기간: 2022-06-27 ~ 2022-07-08
+>
 > 팀원: [Kay](https://github.com/KayAhnDS), [Kiwi](https://github.com/kiwi1023)
+>
 > 리뷰어: [Cory](https://github.com/corykim0829)
 
 # 목차
